@@ -5,6 +5,7 @@ image: /imgs/blog/Hero_MoreCode.png
 tags: "engineering"
 slug: more-than-code
 featured: true
+date: 05/20/2025
 ---
 
 # More Than Code: The Hidden Work of a Software Engineer
