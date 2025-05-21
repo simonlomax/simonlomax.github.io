@@ -1,7 +1,7 @@
 ---
 title: More Than Code
 description: The expectations and actual work of a software engineer are more than just coding
-image: /src/imgs/blog/Hero_MoreCode.png
+image: /imgs/blog/Hero_MoreCode.png
 tags: "engineering"
 slug: more-than-code
 featured: true

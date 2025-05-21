@@ -5,7 +5,7 @@ date: 05/19/2025
 featured: true
 tags: engineering
 slug: welcome-to-the-blog
-image: /src/imgs/blog/Hero_Astro.png
+image: /imgs/blog/Hero_Astro.png
 ---
 
 **Hello** and welcome to my blog! I've been meaning to put one of these together for years now. I've set up my fair share of Wordpress sites back in my hay day but when I finally decided to sit down and get things rolling here. I set out a couple of goals for myself. 

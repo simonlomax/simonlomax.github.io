@@ -1,7 +1,7 @@
 ---
 title: "The Hidden Costs of Relying on AI Code Generation"
 description: "Why software developers need to be cautious about trusting AI-generated code—and how to use it responsibly."
-image: /src/imgs/blog/Hero_AI_Blog1.png
+image: /imgs/blog/Hero_AI_Blog1.png
 date: 05/20/2025
 tags: engineering
 slug: hidden-cost-of-ai-code-generation
