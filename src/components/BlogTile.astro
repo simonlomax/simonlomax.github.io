@@ -1,0 +1,18 @@
+---
+const {title, description, url, image, date, tag, slug} = Astro.props
+---
+
+<article class="blog-card">
+    <div class="blog-image">
+        <div class=`category ${tag}`>{tag}</div>
+        <img src={image}>
+    </div>
+    <div class="blog-content">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div class="blog-meta">
+            <span><i class="fas fa-calendar"></i>{date}</span>
+        </div>
+        <a href=`/blog/${slug}` class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+    </div>
+</article>

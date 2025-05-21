@@ -1,0 +1,76 @@
+---
+import NavBar from "../../components/NavBar.astro"
+import Head from "../../components/Head.astro"
+import "../../styles/slug.css"
+import Footer from "../../components/Footer.astro"
+import Space from "../../components/Space.astro"
+
+export async function getStaticPaths(){
+    const postFiles = import.meta.glob("../../blog/*.md", {eager: true})
+    return Object.values(postFiles).map(post => ({
+        params: {slug: post.frontmatter.slug}
+    }));
+}
+
+const { slug } = Astro.params
+console.log(slug);
+const postFiles = import.meta.glob('../../blog/*.md', {eager: true});
+console.log(postFiles);
+
+const matchingEntry = Object.values(postFiles).find(
+    (post) => post.frontmatter.slug === slug
+);
+
+const {frontmatter, Content} = matchingEntry
+---
+<html>
+<Head title=`${frontmatter.title} | Simon Lomax` />
+<NavBar activePage="blog"/>
+<article>
+    <article class="blog-post">
+        <div class="post-hero">
+            <div class="post-hero-image">
+                <img src={frontmatter.image}>
+                <div class="post-category gaming">Gaming</div>
+            </div>
+            <div class="container">
+                <div class="post-hero-content">
+                    <h1>{frontmatter.title}</h1>
+                    <div class="post-meta">
+                        <div class="author">
+                            <img src="/src/imgs/simon.png" alt="Author Avatar">
+                            <span>By Simon Lomax</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="post-content-wrapper">
+                <div class="post-content">
+                    <article class="markdown">
+                        <Content />
+                    </article>
+                    <div class="author-bio">
+                        <div class="author-image">
+                            <img src="/src/imgs/simon.png" alt="Alex Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h3>About the Author</h3>
+                            <h4>Simon Lomax</h4>
+                            <p>Simon is a Director of Platform Development in his day job. He believes in a people first methodology where if his staff is happy they will write better code. On weekends he is an avid gamer who is always looking out for the next release to captivate him. </p>
+                            <div class="social-links">
+                                <a href="https://github.com/simonlomax" class="social-link"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com/in/simonwlomax" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</article>
+<Space />
+<Footer />

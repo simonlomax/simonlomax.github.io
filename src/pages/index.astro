@@ -1,0 +1,26 @@
+---
+import Head from "../components/Head.astro"
+import BlogList from "../components/BlogList.astro"
+import NavBar from "../components/NavBar.astro"
+import CategorySection from "../components/CategorySection.astro"
+import Footer from "../components/Footer.astro"
+import HomeHero from "../components/HomeHero.astro"
+import Space from "../components/Space.astro"
+---
+<html lang="en">
+	<Head title="Simon Lomax" />
+	<body>
+		<section id = "navbar">
+			<NavBar activePage="home"/>
+		</section>
+		<HomeHero />
+		<section id = "featured" class="featured">
+			<BlogList />
+		</section>
+		<section id="categories" class="categories">
+			<CategorySection />
+		</section>
+		<Space />
+		<Footer />
+	</body>
+</html>

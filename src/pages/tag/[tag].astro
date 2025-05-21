@@ -1,0 +1,45 @@
+---
+import NavBar from "../../components/NavBar.astro"
+import Head from "../../components/Head.astro"
+import Footer from "../../components/Footer.astro"
+import BlogTile from "../../components/BlogTile.astro"
+import "../../styles/blogtile.css"
+import Space from "../../components/Space.astro"
+
+export async function getStaticPaths(){
+    const postFiles = import.meta.glob("../../blog/*.md", {eager: true})
+    return Object.values(postFiles).map(post => ({
+        params: {tag: post.frontmatter.tags}
+    }));
+}
+
+const { tag } = Astro.params
+const posts = Object.values(import.meta.glob('../../blog/*.md', { eager: true }));
+---
+<html>
+<Head title=`${tag} | Simon Lomax` />
+<body>
+<NavBar activePage="blog"/>
+<main class="blog-main tag-main">
+    <div class="container">
+        <h1 class="blog-title"><span>{tag}</span> Articles</h1>
+        <div class="blog-grid">
+
+            {posts.map((post) => post.frontmatter.tags === tag ? (
+                    <BlogTile title={post.frontmatter.title} 
+                                description={post.frontmatter.description} 
+                                date={post.frontmatter.date} 
+                                url={post.frontmatter.slug}
+                                tag={post.frontmatter.tags}
+                                image={post.frontmatter.image}
+                                slug={post.frontmatter.slug} />
+                
+                ): null)
+            }
+        </div>
+    </div>
+</main>
+<Space />
+<Footer />
+</body>
+</html>

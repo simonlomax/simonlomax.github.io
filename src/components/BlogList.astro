@@ -1,0 +1,42 @@
+---
+import { any } from "astro:schema";
+import {Image} from "astro:assets"
+
+const postsImport = import.meta.glob('../blog/*.md');
+const posts = await Promise.all(
+  Object.entries(postsImport).map(async ([path, resolver]) => {
+    const post = await resolver() as {frontmatter: any; default: any}
+    const slug = path
+      .split('/')
+      .pop()
+      .replace('.md', '');
+
+    return {
+      ...post,
+      slug,
+    };
+  })
+);
+---
+
+<div class="container featured">
+    <h2 class="section-title">Featured Articles</h2>
+    <div class="featured-grid-3">
+        {posts.map((post) => post.frontmatter.featured === true ? (
+        
+        <article class="card">
+            <div class="card-image">
+                <img src={post.frontmatter.image} alt="Category Article">
+            </div>
+            <div class="card-content">
+                <h3>{post.frontmatter.title}</h3>
+                <p>{post.frontmatter.description}</p>
+                <div class="card-meta">
+                    <span><i class="fas fa-calendar"></i>{post.frontmatter.date}</span>
+                </div>
+                <a href={`/blog/${post.frontmatter.slug}`} class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+        ): null)}
+    </div>
+</div>

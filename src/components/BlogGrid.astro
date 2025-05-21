@@ -1,0 +1,27 @@
+---
+import BlogTile from "./BlogTile.astro";
+import '../styles/blogtile.css'
+
+const posts = Object.values(import.meta.glob('../blog/*.md', { eager: true }));
+
+---
+
+<main class="blog-main">
+    <div class="container">
+        <h1 class="blog-title">Latest Articles</h1>
+        <div class="blog-grid">
+            {
+                posts.map((post) => 
+                (
+                    <BlogTile title={post.frontmatter.title} 
+                    description={post.frontmatter.description} 
+                    date={post.frontmatter.date} 
+                    url={post.frontmatter.slug}
+                    tag={post.frontmatter.tags}
+                    image={post.frontmatter.image}
+                    slug={post.frontmatter.slug} />
+                ))
+            }
+        </div>
+    </div>
+</main>

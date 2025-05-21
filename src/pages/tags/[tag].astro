@@ -1,0 +1,29 @@
+---
+export function getStaticPaths(){
+    return [
+        { params: {tag: "gaming"}},
+        { params: {tag: "general"}},
+        { params: {tag: "engineering"}},
+    ]
+}
+const { tag } = Astro.params
+
+console.log(tag)
+
+const allPosts = import.meta.glob('../../blog/*.md', {eager: true});
+console.log(allPosts)
+
+const filteredPosts = Object.values(allPosts).filter(post =>
+    post.frontmatter.tags.includes(tag)
+);
+---
+
+<h1>Posts with {tag}</h1>
+
+{filteredPosts.length > 0 ? (
+    filteredPosts.map(post => (
+        <article>
+            <h2>{post.frontmatter.title}</h2>
+        </article>
+    ))
+) : (<p>Yolo</p>)}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background shape -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7" />
+      <stop offset="100%" stop-color="#00b894" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="256" cy="256" r="240" fill="url(#logoGradient)" />
+  
+  <!-- Corrected S Letter -->
+  <path d="M240,150 C200,150 170,180 170,220 C170,260 200,280 240,280 C280,280 290,310 290,330 C290,350 270,370 240,370 C210,370 190,350 190,330"
+        stroke="white" stroke-width="40" stroke-linecap="round" fill="none" />
+  
+  <!-- L Letter -->
+  <path d="M290,140 L290,340 L370,340" 
+        stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Optional: Add a subtle inner shadow effect -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3" />
+</svg> 

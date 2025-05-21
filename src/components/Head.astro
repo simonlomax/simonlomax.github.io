@@ -1,0 +1,15 @@
+---
+const {title = "SLBlog", ...props} = Astro.props
+import "../styles/main.css"
+---
+
+<head>
+    <link rel="sitemap" href="sitemap-index.xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>{title}</title> 
+    <meta charset="utf-8">
+    <meta property="og:title" content="SLBlog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Astro Blog" />
+</head>
+
